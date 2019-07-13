@@ -8,4 +8,8 @@ public interface ClientServices {
 
 	public List<Client> getAll();
 	
+	public Client getById(Long id);
+	
+	public Client create(Client newClient);
+	
 }

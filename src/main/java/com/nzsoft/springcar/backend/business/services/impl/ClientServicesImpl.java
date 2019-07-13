@@ -1,6 +1,9 @@
 package com.nzsoft.springcar.backend.business.services.impl;
 
 import java.util.List;
+import java.util.Optional;
+
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +22,22 @@ public class ClientServicesImpl implements ClientServices{
 	public List<Client> getAll() {
 
 		return clientRepository.findAll();
+	}
+	
+	@Override
+	public Client getById(Long id){
+		
+		Optional<Client> optional = this.clientRepository.findById(id);
+		
+		return optional.isPresent()? optional.get() : null;
+		
+	}
+
+	@Transactional
+	@Override
+	public Client create(Client newClient) {
+		Client createdClient = clientRepository.save(newClient);
+		return createdClient;
 	}
 	
 }
