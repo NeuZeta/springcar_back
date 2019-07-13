@@ -2,10 +2,16 @@ package com.nzsoft.springcar.backend.integration.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class Contact implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
+	@Column(name="TELEFONO")
 	private String phoneNumber;
+	
 	private String email;
 	
 	public Contact () {

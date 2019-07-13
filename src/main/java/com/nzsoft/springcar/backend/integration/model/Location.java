@@ -2,11 +2,18 @@ package com.nzsoft.springcar.backend.integration.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class Location implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private String address;
+	
+	@Column(name="ZIP_CODE")
 	private String zipCode;
+	
 	private String city;
 	private String country;
 	
