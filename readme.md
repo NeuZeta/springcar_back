@@ -8,7 +8,9 @@ La aplicación escucha el puerto 8081. Puedes cambiar el puerto en application.p
 
 Endpoints:
 
-	- /clients
+	- GET /clients (para obtener un listado de todos los clientes)
+	- GET /clients/id (para obtener un cliente a partir de la id)
+	- POST /clients (para crear un cliente)
 	
 	
 	
