@@ -11,7 +11,7 @@ Endpoints:
 	- GET /clients (para obtener un listado de todos los clientes)
 	- GET /clients/id (para obtener un cliente a partir de la id)
 	- POST /clients (para crear un cliente)
-	
-	
-	
 
+	- GET /offices (para obtener un listado de todas las oficinas)
+	- GET /offices/id (para obtener una oficina a partir de la id)
+	- POST /offices (para crear una oficina)
