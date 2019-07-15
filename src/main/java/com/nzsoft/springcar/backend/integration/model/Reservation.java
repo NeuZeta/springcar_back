@@ -3,15 +3,46 @@ package com.nzsoft.springcar.backend.integration.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
+
+@Entity
+@Table(name="RESERVATIONS")
 public class Reservation implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	@Id
 	private Long id;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name="RESERVATION_DATE")
 	private Date reservationDate;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name="PICKUP_DATE")
 	private Date pickupDate;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name="DROPOFF_DATE")
 	private Date dropOffDate;
+	
+	@ManyToOne
+	@JoinColumn(name="ID_CLIENT")
 	private Client client;
+	
+	@Transient
 	private Car car;
+	
+	@Enumerated(EnumType.STRING)
 	private InsuranceType insuranceType;
 	
 	public Reservation(){
@@ -75,13 +106,6 @@ public class Reservation implements Serializable {
 	}
 	
 	
-
-	/*
-	 * INNER ENUM InsuranceType
-	 * 
-	 * 
-	 */
-
 	@Override
 	public String toString() {
 		return "Reservation [id=" + id + ", reservationDate=" + reservationDate + ", pickupDate=" + pickupDate
@@ -89,7 +113,11 @@ public class Reservation implements Serializable {
 				+ insuranceType + "]";
 	}
 
-
+	/*
+	 * INNER ENUM InsuranceType
+	 * 
+	 * 
+	 */
 
 	enum InsuranceType{
 		BASE, TOP;
