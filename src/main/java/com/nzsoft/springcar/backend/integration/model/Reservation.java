@@ -10,6 +10,8 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -63,7 +65,11 @@ public class Reservation implements Serializable {
 	// https://www.baeldung.com/jpa-many-to-many
 	// https://www.objectdb.com/api/java/jpa/ManyToMany
 	
-	@Transient
+	@ManyToMany
+	@JoinTable(
+			  name = "RESERVAS_EXTRAS", 
+			  joinColumns = @JoinColumn(name = "ID_RESERVA"), 
+			  inverseJoinColumns = @JoinColumn(name = "ID_EXTRA"))
 	private List<CommonExtra> commonExtras;
 	
 	public Reservation(){
