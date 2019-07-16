@@ -2,6 +2,7 @@ package com.nzsoft.springcar.backend.integration.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +11,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -44,6 +46,13 @@ public class Reservation implements Serializable {
 	
 	@Enumerated(EnumType.STRING)
 	private InsuranceType insuranceType;
+	
+	private boolean hasTireAndGlassProtection;
+	
+	//Revisar con Jordi para ver si es correcto
+	@OneToMany
+	@JoinColumn(name="ID_EXTRA")
+	private List<CommonExtra> commonExtras;
 	
 	public Reservation(){
 		
@@ -105,7 +114,22 @@ public class Reservation implements Serializable {
 		this.insuranceType = insuranceType;
 	}
 	
-	
+	public boolean isHasTireAndGlassProtection() {
+		return hasTireAndGlassProtection;
+	}
+
+	public void setHasTireAndGlassProtection(boolean hasTireAndGlassProtection) {
+		this.hasTireAndGlassProtection = hasTireAndGlassProtection;
+	}
+
+	public List<CommonExtra> getCommonExtras() {
+		return commonExtras;
+	}
+
+	public void setCommonExtras(List<CommonExtra> commonExtras) {
+		this.commonExtras = commonExtras;
+	}
+
 	@Override
 	public String toString() {
 		return "Reservation [id=" + id + ", reservationDate=" + reservationDate + ", pickupDate=" + pickupDate
