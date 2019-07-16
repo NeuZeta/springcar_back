@@ -34,3 +34,11 @@ INSERT INTO EXTRAS VALUES
 (3, 'Booster seat (15 - 36kg)', 9.99),
 (4, 'Snow chains', 18.33),
 (5, 'Ski & Snowboard rack', 18.33);
+
+INSERT INTO RESERVATIONS_EXTRAS VALUES
+(2,1),
+(2,3),
+(3,1),
+(5,4),
+(5,5);
+
