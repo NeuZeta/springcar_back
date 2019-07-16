@@ -31,7 +31,7 @@ public class CommonExtra implements Serializable{
 	private String name;
 	
 	@Column(name="PRECIO")
-    private Double price;
+    private double price;
 	
 	public CommonExtra() {
 		
@@ -53,11 +53,11 @@ public class CommonExtra implements Serializable{
 		this.name = name;
 	}
 
-	public Double getPrice() {
+	public double getPrice() {
 		return price;
 	}
 
-	public void setPrice(Double price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 
