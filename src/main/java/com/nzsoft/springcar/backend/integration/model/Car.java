@@ -37,6 +37,8 @@ public class Car implements Serializable {
 	
 	
 	private int suitcasesCapacity;
+	private Category category;
+	private double basePrice;
 	private String photo;
 	
 	public Car(){
@@ -105,6 +107,24 @@ public class Car implements Serializable {
 
 	public void setSuitcasesCapacity(int suitcasesCapacity) {
 		this.suitcasesCapacity = suitcasesCapacity;
+	}
+
+	
+	
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	public double getBasePrice() {
+		return basePrice;
+	}
+
+	public void setBasePrice(double basePrice) {
+		this.basePrice = basePrice;
 	}
 
 	public String getPhoto() {

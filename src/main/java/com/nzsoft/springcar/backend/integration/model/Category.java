@@ -5,6 +5,7 @@ public class Category {
 	private String name;
     private Double baseInsurancePrice;
     private Double topInsurancePrice;
+    private Double tireAndGlassProtectionPrice;
 	
     public Category() {
 		
@@ -32,6 +33,14 @@ public class Category {
 
 	public void setTopInsurancePrice(Double topInsurancePrice) {
 		this.topInsurancePrice = topInsurancePrice;
+	}
+
+	public Double getTireAndGlassProtectionPrice() {
+		return tireAndGlassProtectionPrice;
+	}
+
+	public void setTireAndGlassProtectionPrice(Double tireAndGlassProtectionPrice) {
+		this.tireAndGlassProtectionPrice = tireAndGlassProtectionPrice;
 	}
     
     
