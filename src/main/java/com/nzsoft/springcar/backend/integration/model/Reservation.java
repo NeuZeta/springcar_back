@@ -152,6 +152,7 @@ public class Reservation implements Serializable {
 		BASE, TOP;
 	}
 	
+	
 	public double getPrice() {
 		
 		double price = 0;
@@ -182,8 +183,10 @@ public class Reservation implements Serializable {
 		
 		//Sumamos el precio de cada extra que se le ha añadido
 		
-		for (CommonExtra commonExtra : commonExtras) {
-			price += commonExtra.getPrice();
+		if (!commonExtras.isEmpty()) {
+			for (CommonExtra commonExtra : commonExtras) {
+				price += commonExtra.getPrice();
+			}
 		}
 		
 		return price;
