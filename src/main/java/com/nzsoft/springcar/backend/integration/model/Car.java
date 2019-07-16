@@ -2,16 +2,40 @@ package com.nzsoft.springcar.backend.integration.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
+@Entity
+@Table(name="CARS")
 public class Car implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	@Id
 	private Long id;
+	
 	private String model;
+	
+	@Enumerated(EnumType.STRING)
 	private Transmission transmission;
+	
+	@ManyToOne
+	@JoinColumn(name="ID_OFFICE")
 	private Office office;
-	private boolean haAirAconditioner;
+	
+	@Column(name="AIR_ACONDITIONED")
+	private boolean hasAirAconditioned;
+	
 	private int numberOfSeats;
 	private int numberOfDoors;
+	
+	
 	private int suitcasesCapacity;
 	private String photo;
 	
@@ -51,12 +75,12 @@ public class Car implements Serializable {
 		this.office = office;
 	}
 
-	public boolean isHaAirAconditioner() {
-		return haAirAconditioner;
+	public boolean isHaAirAconditioned() {
+		return hasAirAconditioned;
 	}
 
-	public void setHaAirAconditioner(boolean haAirAconditioner) {
-		this.haAirAconditioner = haAirAconditioner;
+	public void setHaAirAconditioned(boolean hasAirAconditioned) {
+		this.hasAirAconditioned = hasAirAconditioned;
 	}
 
 	public int getNumberOfSeats() {
@@ -93,7 +117,7 @@ public class Car implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Car [id=" + id + ", model=" + model + ", haAirAconditioner=" + haAirAconditioner + ", numberOfSeats="
+		return "Car [id=" + id + ", model=" + model + ", hasAirAconditioned=" + hasAirAconditioned + ", numberOfSeats="
 				+ numberOfSeats + ", numberOfDoors=" + numberOfDoors + ", suitcasesCapacity=" + suitcasesCapacity
 				+ ", photo=" + photo + "]";
 	}
