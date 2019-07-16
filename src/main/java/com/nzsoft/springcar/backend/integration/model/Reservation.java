@@ -3,6 +3,7 @@ package com.nzsoft.springcar.backend.integration.model;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -163,6 +164,43 @@ public class Reservation implements Serializable {
 
 	enum InsuranceType{
 		BASE, TOP;
+	}
+	
+	public double getPrice() {
+		
+		double price = 0;
+		
+		//Primero calculamos los días de reserva
+		long timeDifference = this.pickupDate.getTime() - this.dropOffDate.getTime();
+		int differenceInDays = (int) TimeUnit.DAYS.convert(timeDifference, TimeUnit.MILLISECONDS);
+		
+		//Multiplicamos los días por el precio base del coche
+		price = differenceInDays * this.getCar().getBasePrice();
+		
+		//Le sumamos el precio del seguro por categoria
+		
+		switch (insuranceType) {
+			case BASE:
+				price += this.getCar().getCategory().getBaseInsurancePrice();
+				break;
+			case TOP:
+				price += this.getCar().getCategory().getTopInsurancePrice();
+				break;
+		}
+		
+		//Si tiene proteccion de ruedas y cristales le sumamos el precio por categoria
+		
+		if (hasTireAndGlassProtection) {
+			price += this.getCar().getCategory().getTireAndGlassProtectionPrice();
+		}
+		
+		//Sumamos el precio de cada extra que se le ha añadido
+		
+		for (CommonExtra commonExtra : commonExtras) {
+			price += commonExtra.getPrice();
+		}
+		
+		return price;
 	}
 
 }
