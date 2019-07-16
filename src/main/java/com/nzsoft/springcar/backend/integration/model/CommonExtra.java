@@ -2,6 +2,7 @@ package com.nzsoft.springcar.backend.integration.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,18 +15,22 @@ import javax.persistence.TableGenerator;
 public class CommonExtra implements Serializable{
 	private static final long serialVersionUID = 1L;
 
-	/*
+	
 	@Id
-	@TableGenerator(name = "CLIENT_GENERATOR",
+	@TableGenerator(name = "EXTRA_GENERATOR",
 		table = "SECUENCIAS",
 		pkColumnName = "SEQ_NAME",
-		pkColumnValue = "CLIENT_SEQ",
+		pkColumnValue = "EXTRA_SEQ",
 		valueColumnName = "SEQ_NUMBER",
 		allocationSize = 10)
 
-	@GeneratedValue(strategy=GenerationType.TABLE, generator = "CLIENT_GENERATOR")*/
+	@GeneratedValue(strategy=GenerationType.TABLE, generator = "EXTRA_GENERATOR")
 	private Long id;
-    private String name;
+    
+	@Column(name="NOMBRE")
+	private String name;
+	
+	@Column(name="PRECIO")
     private Double price;
 	
 	public CommonExtra() {

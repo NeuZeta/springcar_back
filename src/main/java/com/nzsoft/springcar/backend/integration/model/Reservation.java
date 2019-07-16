@@ -47,6 +47,7 @@ public class Reservation implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private InsuranceType insuranceType;
 	
+	@Column(name="TIRE_GLASS_PROTECTION")
 	private boolean hasTireAndGlassProtection;
 	
 	//Revisar con Jordi para ver si es correcto
