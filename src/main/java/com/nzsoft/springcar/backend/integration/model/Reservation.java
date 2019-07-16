@@ -14,7 +14,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -53,23 +52,10 @@ public class Reservation implements Serializable {
 	@Column(name="TIRE_GLASS_PROTECTION")
 	private boolean hasTireAndGlassProtection;
 	
-	//Revisar con Jordi para ver si es correcto
-	
-	//Creo que la relación debe ser ManyToMany.
-	//Un extra puede estar aplicado en varias reservas y ....
-	//Una reserva puede disponer de varios extras
-	
-	//Esto implica una tabla adicional. Yo la llamaría RESERVAS_EXTRAS en la que
-	//deberían haber básicamente un par de FKs... ID_RESERVA e ID_EXTRA
-	
-	//Toda esta metainformación debería venir a continucación...
-	// https://www.baeldung.com/jpa-many-to-many
-	// https://www.objectdb.com/api/java/jpa/ManyToMany
-	
 	@ManyToMany
 	@JoinTable(
-			  name = "RESERVAS_EXTRAS", 
-			  joinColumns = @JoinColumn(name = "ID_RESERVA"), 
+			  name = "RESERVATIONS_EXTRAS", 
+			  joinColumns = @JoinColumn(name = "ID_RESERVATION"), 
 			  inverseJoinColumns = @JoinColumn(name = "ID_EXTRA"))
 	private List<CommonExtra> commonExtras;
 	
