@@ -35,9 +35,12 @@ public class Car implements Serializable {
 	private int numberOfSeats;
 	private int numberOfDoors;
 	
-	
 	private int suitcasesCapacity;
+	
+	@Transient
 	private Category category;
+	
+	@Column(columnDefinition="decimal", precision=15, scale=2)
 	private double basePrice;
 	private String photo;
 	
