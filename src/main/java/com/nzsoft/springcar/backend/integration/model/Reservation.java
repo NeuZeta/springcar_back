@@ -161,24 +161,27 @@ public class Reservation implements Serializable {
 		long timeDifference = this.pickupDate.getTime() - this.dropOffDate.getTime();
 		int differenceInDays = (int) TimeUnit.DAYS.convert(timeDifference, TimeUnit.MILLISECONDS);
 		
-		//Multiplicamos los días por el precio base del coche
-		price = differenceInDays * this.getCar().getBasePrice();
-		
-		//Le sumamos el precio del seguro por categoria
-		
-		switch (insuranceType) {
-			case BASE:
-				price += this.getCar().getCategory().getBaseInsurancePrice();
-				break;
-			case TOP:
-				price += this.getCar().getCategory().getTopInsurancePrice();
-				break;
-		}
-		
-		//Si tiene proteccion de ruedas y cristales le sumamos el precio por categoria
-		
-		if (hasTireAndGlassProtection) {
-			price += this.getCar().getCategory().getTireAndGlassProtectionPrice();
+		if (this.getCar() != null) {
+			//Multiplicamos los días por el precio base del coche
+			price = differenceInDays * this.getCar().getBasePrice();
+			
+			//Le sumamos el precio del seguro por categoria
+			
+			switch (insuranceType) {
+				case BASE:
+					price += this.getCar().getCategory().getBaseInsurancePrice();
+					break;
+				case TOP:
+					price += this.getCar().getCategory().getTopInsurancePrice();
+					break;
+			}
+			
+			//Si tiene proteccion de ruedas y cristales le sumamos el precio por categoria
+			
+			if (hasTireAndGlassProtection) {
+				price += this.getCar().getCategory().getTireAndGlassProtectionPrice();
+			}
+			
 		}
 		
 		//Sumamos el precio de cada extra que se le ha añadido
