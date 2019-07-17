@@ -24,4 +24,4 @@ Endpoints:
 	
 Model class diagram:
 
-![Alt text](relative/documentation/model_diagram.jpg?raw=true "Model class diagram")
+![Alt text](documentation/model_diagram.jpg?raw=true "Model class diagram")
