@@ -9,12 +9,15 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.TableGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -24,6 +27,14 @@ public class Reservation implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@TableGenerator(name = "RESERVATION_GENERATOR",
+					table = "SECUENCIAS",
+					pkColumnName = "SEQ_NAME",
+					pkColumnValue = "RESERVATION_SEQ",
+					valueColumnName = "SEQ_NUMBER",
+					allocationSize = 10)
+
+	@GeneratedValue(strategy=GenerationType.TABLE, generator = "RESERVATION_GENERATOR")
 	private Long id;
 	
 	@Temporal(TemporalType.TIMESTAMP)
