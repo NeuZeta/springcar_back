@@ -23,13 +23,14 @@ public class CarController {
 	@Autowired
 	private CarServices carServices;
 	
-	@RequestMapping(method=RequestMethod.GET,
+	@RequestMapping(value="cars",
+					method=RequestMethod.GET,
 			        produces=MediaType.APPLICATION_JSON_VALUE)
 	public List<Car> getAll(){
 		return carServices.getAll();
 	}
 	
-	@RequestMapping(value="/images/{carImage}",
+	@RequestMapping(value="cars/image/{carImage}",
 			method=RequestMethod.GET,
 			produces=MediaType.IMAGE_JPEG_VALUE)
 	public ResponseEntity<byte[]> getImageAsResource(@PathVariable ("carImage") String carImage) throws IOException{
