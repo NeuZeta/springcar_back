@@ -4,6 +4,12 @@ INSERT INTO SECUENCIAS VALUES
 ('RESERVATION_SEQ', 1000),
 ('EXTRA_SEQ', 1000);
 
+INSERT INTO CATEGORIES VALUES
+(1,'Categoría A',100,100,100),
+(2,'Categoría B',200,200,200),
+(3,'Categoría C',300,300,300);
+
+
 INSERT INTO CLIENTS VALUES
 (10,'Cliente 1','Apellidos 1','99999999W','Calle 1','Zip code 1','City 1', 'Country 1','932211111','email1@email1.com','username 2', 'password 1'),
 (20,'Cliente 2','Apellidos 2','99999999X','Calle 2','Zip code 2','City 2', 'Country 2','932211112','email2@email2.com','username 2', 'password 2'),
@@ -15,28 +21,28 @@ INSERT INTO OFFICES VALUES
 (20, 'Oficina 2', 'Calle 2','Zip code 2','City 2', 'Country 2','932211112','email2@email2.com');
 
 INSERT INTO CARS VALUES
-(10,'model10',10,'AUTO',TRUE,5,4,3,'car10',100),
-(11,'model11',10,'AUTO',TRUE,5,4,3,'car11',100),
-(12,'model12',10,'AUTO',TRUE,5,4,3,'car12',100),
-(13,'model13',10,'AUTO',TRUE,5,4,3,'car13',100),
-(14,'model14',20,'AUTO',TRUE,5,4,3,'car14',100),
-(15,'model15',20,'AUTO',TRUE,5,4,3,'car15',100),
-(16,'model16',10,'AUTO',TRUE,5,4,3,'car16',100),
-(17,'model17',10,'MANUAL',FALSE,5,4,3,'car17',100),
-(18,'model18',10,'AUTO',TRUE,5,4,3,'car18',100),
-(19,'model19',20,'AUTO',TRUE,5,4,3,'car19',100),
-(20,'model20',20,'AUTO',TRUE,5,4,3,'car20',100),
-(21,'model21',20,'AUTO',TRUE,5,4,3,'car21',100),
-(22,'model22',10,'AUTO',TRUE,5,4,3,'car22',100),
-(23,'model23',10,'AUTO',TRUE,5,4,3,'car23',100),
-(24,'model24',10,'AUTO',TRUE,5,4,3,'car24',100);
+(10,'model10',10,1,'AUTO',TRUE,5,4,3,'car10',100),
+(11,'model11',10,1,'AUTO',TRUE,5,4,3,'car11',100),
+(12,'model12',10,2,'AUTO',TRUE,5,4,3,'car12',100),
+(13,'model13',10,1,'AUTO',TRUE,5,4,3,'car13',100),
+(14,'model14',20,3,'AUTO',TRUE,5,4,3,'car14',100),
+(15,'model15',20,1,'AUTO',TRUE,5,4,3,'car15',100),
+(16,'model16',10,2,'AUTO',TRUE,5,4,3,'car16',100),
+(17,'model17',10,1,'MANUAL',FALSE,5,4,3,'car17',100),
+(18,'model18',10,1,'AUTO',TRUE,5,4,3,'car18',100),
+(19,'model19',20,1,'AUTO',TRUE,5,4,3,'car19',100),
+(20,'model20',20,3,'AUTO',TRUE,5,4,3,'car20',100),
+(21,'model21',20,1,'AUTO',TRUE,5,4,3,'car21',100),
+(22,'model22',10,2,'AUTO',TRUE,5,4,3,'car22',100),
+(23,'model23',10,2,'AUTO',TRUE,5,4,3,'car23',100),
+(24,'model24',10,1,'AUTO',TRUE,5,4,3,'car24',100);
 
 INSERT INTO RESERVATIONS VALUES
-(1,'2019-01-20 10:50:00','2019-10-30 09:00:00','2019-10-30 21:00:00',10,'BASE',TRUE),
-(2,'2019-01-20 10:50:00','2019-10-30 10:00:00','2019-10-30 16:00:00',20,'BASE',TRUE),
-(3,'2019-01-20 10:50:00','2019-11-01 09:00:00','2019-11-02 21:00:00',10,'BASE',TRUE),
-(4,'2019-01-20 10:50:00','2019-11-02 15:00:00','2019-11-02 23:30:00',30,'TOP',TRUE),
-(5,'2019-01-20 10:50:00','2019-11-03 08:39:00','2019-11-03 17:30:00',40,'BASE',FALSE);
+(1,'2019-01-20 10:50:00','2019-10-30 09:00:00','2019-10-30 21:00:00',10,10,'BASE',TRUE),
+(2,'2019-01-20 10:50:00','2019-10-30 10:00:00','2019-10-30 16:00:00',20,20,'BASE',TRUE),
+(3,'2019-01-20 10:50:00','2019-11-01 09:00:00','2019-11-02 21:00:00',21,10,'BASE',TRUE),
+(4,'2019-01-20 10:50:00','2019-11-02 15:00:00','2019-11-02 23:30:00',22,30,'TOP',TRUE),
+(5,'2019-01-20 10:50:00','2019-11-03 08:39:00','2019-11-03 17:30:00',23,40,'BASE',FALSE);
 
 INSERT INTO EXTRAS VALUES
 (1, 'Baby seat (0 - 13kg)', 11.99),

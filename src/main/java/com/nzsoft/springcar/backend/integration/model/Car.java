@@ -10,7 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 @Entity
 @Table(name="CARS")
@@ -37,7 +36,8 @@ public class Car implements Serializable {
 	
 	private int suitcasesCapacity;
 	
-	@Transient
+	@ManyToOne
+	@JoinColumn(name="ID_CATEGORY")
 	private Category category;
 	
 	@Column(columnDefinition="decimal", precision=15, scale=2)
@@ -112,8 +112,6 @@ public class Car implements Serializable {
 		this.suitcasesCapacity = suitcasesCapacity;
 	}
 
-	
-	
 	public Category getCategory() {
 		return category;
 	}

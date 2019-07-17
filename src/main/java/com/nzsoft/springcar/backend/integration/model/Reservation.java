@@ -17,7 +17,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Transient;
 
 @Entity
 @Table(name="RESERVATIONS")
@@ -43,7 +42,8 @@ public class Reservation implements Serializable {
 	@JoinColumn(name="ID_CLIENT")
 	private Client client;
 	
-	@Transient
+	@ManyToOne
+	@JoinColumn(name="ID_CAR")
 	private Car car;
 	
 	@Enumerated(EnumType.STRING)
