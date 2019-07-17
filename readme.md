@@ -19,3 +19,9 @@ Endpoints:
 	- POST /offices (para crear una oficina)
 	
 	- GET /reservations (para obtener un listado de todas las reservas)
+
+	- GET /categories
+	
+Model class diagram:
+
+![Alt text](relative/documentation/model_diagram.jpg?raw=true "Model class diagram")
