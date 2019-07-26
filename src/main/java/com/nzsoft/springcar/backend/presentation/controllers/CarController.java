@@ -1,6 +1,7 @@
 package com.nzsoft.springcar.backend.presentation.controllers;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.nzsoft.springcar.backend.business.services.CarServices;
 import com.nzsoft.springcar.backend.integration.model.Car;
+import com.nzsoft.springcar.backend.integration.model.Office;
 
 @RestController
 public class CarController {
@@ -42,10 +44,27 @@ public class CarController {
 					method=RequestMethod.GET,
 					produces=MediaType.APPLICATION_PROBLEM_JSON_VALUE)
 	public List<Car> getNotAvailables(@RequestParam (value = "officeId", required=true) Long officeId,
-									  @RequestParam (value = "inicio", required = true) Date inicio, 
-									  @RequestParam (value = "fin", required = true) Date fin){
+									  @RequestParam (value = "inicio", required = true) String inicio, 
+									  @RequestParam (value = "fin", required = true) String fin){
 		
-		return this.getNotAvailables(officeId, inicio, fin);
+		SimpleDateFormat sdf = new SimpleDateFormat ("dd-MM-yyyy");
+		
+		Date fechaInicio = null;
+		Date fechaFin = null;
+		
+		try {
+			fechaInicio = sdf.parse(inicio);
+			fechaFin = sdf.parse(fin);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		
+		
+		Office office = new Office();
+		office.setId(officeId);
+		
+		return this.carServices.getNotAvailableBetweenDates(office, fechaInicio, fechaFin);
 	}
 	
 	
