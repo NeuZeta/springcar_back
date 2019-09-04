@@ -70,6 +70,8 @@ public class Reservation implements Serializable {
 			  inverseJoinColumns = @JoinColumn(name = "ID_EXTRA"))
 	private List<CommonExtra> commonExtras;
 	
+	private Double price;
+	
 	public Reservation(){
 		
 	}
@@ -145,14 +147,23 @@ public class Reservation implements Serializable {
 	public void setCommonExtras(List<CommonExtra> commonExtras) {
 		this.commonExtras = commonExtras;
 	}
+	
+	public Double getPrice() {
+		return price;
+	}
+	
+	public void setPrice(Double price) {
+		this.price = price;
+	}
 
 	@Override
 	public String toString() {
 		return "Reservation [id=" + id + ", reservationDate=" + reservationDate + ", pickupDate=" + pickupDate
 				+ ", dropOffDate=" + dropOffDate + ", client=" + client + ", car=" + car + ", insuranceType="
-				+ insuranceType + "]";
+				+ insuranceType + ", hasTireAndGlassProtection=" + hasTireAndGlassProtection + ", commonExtras="
+				+ commonExtras + ", price=" + price + "]";
 	}
-
+	
 	/*
 	 * INNER ENUM InsuranceType
 	 * 
@@ -161,49 +172,6 @@ public class Reservation implements Serializable {
 
 	enum InsuranceType{
 		BASE, TOP;
-	}
-	
-	
-	public double getPrice() {
-		
-		double price = 0;
-		
-		//Primero calculamos los días de reserva
-		long timeDifference = this.pickupDate.getTime() - this.dropOffDate.getTime();
-		int differenceInDays = (int) TimeUnit.DAYS.convert(timeDifference, TimeUnit.MILLISECONDS);
-		
-		if (this.getCar() != null) {
-			//Multiplicamos los días por el precio base del coche
-			price = differenceInDays * this.getCar().getBasePrice();
-			
-			//Le sumamos el precio del seguro por categoria
-			
-			switch (insuranceType) {
-				case BASE:
-					price += this.getCar().getCategory().getBaseInsurancePrice();
-					break;
-				case TOP:
-					price += this.getCar().getCategory().getTopInsurancePrice();
-					break;
-			}
-			
-			//Si tiene proteccion de ruedas y cristales le sumamos el precio por categoria
-			
-			if (hasTireAndGlassProtection) {
-				price += this.getCar().getCategory().getTireAndGlassProtectionPrice();
-			}
-			
-		}
-		
-		//Sumamos el precio de cada extra que se le ha añadido
-		
-		if (!commonExtras.isEmpty()) {
-			for (CommonExtra commonExtra : commonExtras) {
-				price += commonExtra.getPrice();
-			}
-		}
-		
-		return price;
 	}
 
 }
