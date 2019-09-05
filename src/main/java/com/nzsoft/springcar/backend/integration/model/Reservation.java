@@ -3,7 +3,6 @@ package com.nzsoft.springcar.backend.integration.model;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
