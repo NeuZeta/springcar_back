@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.nzsoft.springcar.backend.business.services.ReservationServices;
+import com.nzsoft.springcar.backend.integration.model.Client;
 import com.nzsoft.springcar.backend.integration.model.Office;
 import com.nzsoft.springcar.backend.integration.model.Reservation;
 
@@ -27,6 +28,17 @@ public class ReservationController {
 			        produces=MediaType.APPLICATION_JSON_VALUE)
 	public List<Reservation> getAll(){
 		return reservationServices.getAll();
+	}
+	
+	// *************************************************************************************
+	//  GET a reservation by id
+	// *************************************************************************************
+
+	@RequestMapping(value="/reservations/{id}",
+				method=RequestMethod.GET,
+				produces=MediaType.APPLICATION_JSON_VALUE)
+	public Reservation getById (@PathVariable ("id") Long id){
+		return reservationServices.getById(id);
 	}
 	
 	@RequestMapping(value="/reservations/office/{id}",
