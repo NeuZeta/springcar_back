@@ -15,7 +15,7 @@ public interface CarRepository extends JpaRepository<Car,Long> {
 	
 	// OrderBy? Por precio? DESC, ASC ?
 	// Esto es JPQL
-	
+	/*
 	@Query("SELECT r.car FROM Reservation r WHERE ((r.pickupDate    >= :f1 AND r.pickupDate  < :f2)  OR " +
 			                                     " (r.dropOffDate   >  :f1 AND r.dropOffDate < :f2)  OR " +
 			                                     " (r.pickupDate    <  :f1 AND r.dropOffDate > :f2)) AND " +
@@ -23,5 +23,15 @@ public interface CarRepository extends JpaRepository<Car,Long> {
 			
 	public List<Car> getNotAvailableCarsBetweenDates(@Param ("codigoOficina") long codigoOficina, 
 													 @Param ("f1") Date f1, 
-													 @Param ("f2") Date f2);
+													 @Param ("f2") Date f2);*/
+	
+	
+	@Query("SELECT r.car From Reservation r WHERE r.car NOT IN (SELECT r.car FROM Reservation r WHERE ((r.pickupDate    >= :f1 AND r.pickupDate  < :f2)  OR " +
+            " (r.dropOffDate   >  :f1 AND r.dropOffDate < :f2)  OR " +
+            " (r.pickupDate    <  :f1 AND r.dropOffDate > :f2)) AND " +
+            "  r.car.office.id = :codigoOficina)") 
+
+	public List<Car> getNotAvailableCarsBetweenDates(@Param ("codigoOficina") long codigoOficina, 
+				 @Param ("f1") Date f1, 
+				 @Param ("f2") Date f2);
 }
