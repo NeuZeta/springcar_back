@@ -25,9 +25,20 @@ public class CarServicesImpl implements CarServices {
 	@Override
 	public List<Car> getNotAvailableBetweenDates(Office office, Date inicio, Date fin) {
 		
+		
+		List<Car> allCars = carRepository.getByOffice(office);
 		List<Car> notAvailableCars = carRepository.getNotAvailableCarsBetweenDates(office.getId(), inicio, fin);
 		
-		return notAvailableCars;
+		
+		// Tenemos los NO available
+		
+		// Necesitamos TODOS los coches de esa oficina en una List<Car>
+		// Cotejamos (Abrá algún método que lo haga directamente) con los coches que NO available
+		// Acabamos devolviendo el List<Car>
+		
+		allCars.removeAll(notAvailableCars);
+		
+		return allCars;
 	}
 
 }
