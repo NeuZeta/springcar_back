@@ -38,7 +38,7 @@ public class CarServicesImpl implements CarServices {
 		
 		allCars.removeAll(notAvailableCars);
 		
-		return notAvailableCars;
+		return allCars;
 	}
 
 }
