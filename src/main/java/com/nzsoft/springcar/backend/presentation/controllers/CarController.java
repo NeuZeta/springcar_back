@@ -47,7 +47,7 @@ public class CarController {
 									  @RequestParam (value = "inicio", required = true) String inicio, 
 									  @RequestParam (value = "fin", required = true) String fin){
 		
-		SimpleDateFormat sdf = new SimpleDateFormat ("yyyy-MM-dd'T'HH:mm:ss.SSS");
+		SimpleDateFormat sdf = new SimpleDateFormat ("dd-MM-yyyy");
 		
 		Date fechaInicio = null;
 		Date fechaFin = null;
