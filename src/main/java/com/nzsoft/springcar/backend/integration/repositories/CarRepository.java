@@ -28,6 +28,15 @@ public interface CarRepository extends JpaRepository<Car,Long> {
 													 @Param ("f1") Date f1, 
 													 @Param ("f2") Date f2);
 	
+	/*
+	
+	@Query("SELECT r.car FROM Reservation r WHERE r.car.office.id = :codigoOficina AND :f1 <> :f2") 
+
+	public List<Car> getNotAvailableCarsBetweenDates(@Param ("codigoOficina") long codigoOficina, 
+			 @Param ("f1") Date f1, 
+			 @Param ("f2") Date f2);
+	
+*/	
 	
 	/*
 	@Query("SELECT r.car From Reservation r WHERE  r.car.office.id = :codigoOficina AND r.car NOT IN (SELECT r.car FROM Reservation r WHERE ((r.pickupDate    >= :f1 AND r.pickupDate  < :f2)  OR " +

@@ -47,7 +47,7 @@ public class CarController {
 									  @RequestParam (value = "inicio", required = true) String inicio, 
 									  @RequestParam (value = "fin", required = true) String fin){
 		
-		SimpleDateFormat sdf = new SimpleDateFormat ("dd-MM-yyyy");
+		SimpleDateFormat sdf = new SimpleDateFormat ("yyyy-MM-dd'T'HH:mm:ss.SSS");
 		
 		Date fechaInicio = null;
 		Date fechaFin = null;
@@ -64,7 +64,9 @@ public class CarController {
 		Office office = new Office();
 		office.setId(officeId);
 		
-		return this.carServices.getNotAvailableBetweenDates(office, fechaInicio, fechaFin);
+		List<Car> cochesNoDisponibles = carServices.getNotAvailableBetweenDates(office, fechaInicio, fechaFin);
+		
+		return cochesNoDisponibles;
 	}
 	
 	
