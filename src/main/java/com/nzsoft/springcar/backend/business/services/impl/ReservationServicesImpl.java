@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.nzsoft.springcar.backend.business.services.ReservationServices;
+import com.nzsoft.springcar.backend.integration.model.Client;
 import com.nzsoft.springcar.backend.integration.model.Office;
 import com.nzsoft.springcar.backend.integration.model.Reservation;
 import com.nzsoft.springcar.backend.integration.repositories.ReservationRepository;
@@ -46,6 +47,15 @@ public class ReservationServicesImpl implements ReservationServices {
 		return reservations;
 	}
 
+	@Override
+	public List<Reservation> getByClient (Client client) {
+		
+		List<Reservation> reservations = reservationRespository.findByClient(client.getId());
+		
+		return reservations;
+	}
+	
+	
 	@Override
 	@Transactional
 	public Reservation create(Reservation reservation) {
