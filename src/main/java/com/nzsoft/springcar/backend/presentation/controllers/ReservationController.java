@@ -69,15 +69,7 @@ public class ReservationController {
 		return reservationServices.getByOffice(office);
 	}
 	
-	
-	@RequestMapping(value="/reservations/{id}",
-					method=RequestMethod.DELETE)
-	@ResponseStatus(value = HttpStatus.OK)
-	public void delete(@PathVariable ("id") long reservationId){
-		reservationServices.delete(reservationId);
-	}
-	
-	
+
 	// El JSON que esperamos recibir (@RequestBody) no tiene por qué tener
 	// todos los atributos establecidos en los objetos anidados (HAS-A)
 	// Lo que sí que tiene que estar es el código de dichos objetos..
@@ -90,5 +82,18 @@ public class ReservationController {
 		Reservation createdReservation = reservationServices.create(reservation);
 		return createdReservation;
 	}
+	
+	
+	// *************************************************************************************
+	//  DELETE a reservation by id
+	// *************************************************************************************
+	
+	@RequestMapping(value="/reservations/{id}",
+			method=RequestMethod.DELETE)
+	@ResponseStatus(value = HttpStatus.OK)
+	public void delete(@PathVariable ("id") long reservationId){
+		reservationServices.delete(reservationId);
+	}
+	
 	
 }

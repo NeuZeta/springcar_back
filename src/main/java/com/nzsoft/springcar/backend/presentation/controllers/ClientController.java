@@ -46,7 +46,6 @@ public class ClientController {
 	}
 	
 	
-	
 	/* ************************************************************************************
   		CREATE a client
 	 * ************************************************************************************/
@@ -59,6 +58,7 @@ public class ClientController {
 		final Client createdClient = clientServices.create(newClient);
 		return createdClient;
 	}
+
 	
 	
 	
