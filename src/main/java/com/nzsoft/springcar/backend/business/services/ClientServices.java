@@ -12,4 +12,6 @@ public interface ClientServices {
 	
 	public Client create(Client newClient);
 	
+	public Client update(Client updatedClient);
+	
 }

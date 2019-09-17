@@ -58,8 +58,20 @@ public class ClientController {
 		final Client createdClient = clientServices.create(newClient);
 		return createdClient;
 	}
-
 	
+
+	/* ************************************************************************************
+		UPDATE a client
+	 * ************************************************************************************/
+	
+	@RequestMapping (value="/clients",
+					method=RequestMethod.PUT,
+					consumes=MediaType.APPLICATION_JSON_VALUE,
+					produces=MediaType.APPLICATION_JSON_VALUE)
+	public Client update(@RequestBody Client client) {
+		final Client updatedClient = clientServices.update(client);
+		return updatedClient;
+	}
 	
 	
 }

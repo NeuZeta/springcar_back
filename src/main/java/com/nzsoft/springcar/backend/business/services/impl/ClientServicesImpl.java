@@ -39,5 +39,11 @@ public class ClientServicesImpl implements ClientServices{
 		Client createdClient = clientRepository.save(newClient);
 		return createdClient;
 	}
+
+	@Override
+	public Client update(Client updatedClient) {
+		Client updatedclient = clientRepository.save(updatedClient);
+		return updatedclient;
+	}
 	
 }
