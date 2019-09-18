@@ -42,6 +42,14 @@ public class ClientController {
 				method=RequestMethod.GET,
 				produces=MediaType.APPLICATION_JSON_VALUE)
 	public Client getById (@PathVariable ("id") Long id){
+		
+		try {
+			Thread.sleep(20000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return clientServices.getById(id);
 	}
 	
